@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import PlaceList from "../components/PlaceList";
 import { userInfo } from "os";
 
+
 const UserPlaces = () => {
   const PLACES = [
     {
