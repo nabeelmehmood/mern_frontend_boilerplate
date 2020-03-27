@@ -46,13 +46,14 @@ const NewPlace = () => {
     event.preventDefault();
     try {
       const formData = new FormData();
-      FormData.append("title", formState.inputs.title.value);
-      FormData.append("description", formState.inputs.description.value);
-      FormData.append("address", formState.inputs.address.value);
-      FormData.append("image", formState.inputs.image.value);
-      FormData.append("creator", formState.inputs.creator.value);
+      formData.append("title", formState.inputs.title.value);
+      formData.append("description", formState.inputs.description.value);
+      formData.append("address", formState.inputs.address.value);
+      formData.append("image", formState.inputs.image.value);
 
-      await sendRequest("http://localhost:5000/api/places", "POST", formData);
+      await sendRequest("http://localhost:5000/api/places", "POST", formData, {
+        Authorization: "Bearer " + auth.token
+      });
       // Redirect user
       history.push("/");
     } catch (err) {}
